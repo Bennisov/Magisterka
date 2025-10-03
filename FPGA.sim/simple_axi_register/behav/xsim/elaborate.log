@@ -1,0 +1,29 @@
+Vivado Simulator v2025.1.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /storage/Xilinx/2025.1/Vivado/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_21 -L uvm -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_simple_axi_register_behav xil_defaultlib.tb_simple_axi_register xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.axi_register_verification_axi_vi...
+Compiling package xilinx_vip.axi_vip_pkg
+Compiling package xilinx_vip.xil_common_vip_pkg
+Compiling package std.std
+Compiling package xil_defaultlib.$unit_tb_simple_axi_register_sv
+Compiling module xil_defaultlib.SimpleRegistersBank_slave_lite_v...
+Compiling module xil_defaultlib.SimpleRegistersBank
+Compiling module xil_defaultlib.axi_register_verification_Simple...
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=2,C_AX...
+Compiling module axi_vip_v1_1_21.axi_vip_v1_1_21_top(C_AXI_PROTOC...
+Compiling module xil_defaultlib.axi_register_verification_axi_vi...
+Compiling module xil_defaultlib.axi_register_verification
+Compiling module xil_defaultlib.axi_register_verification_wrappe...
+Compiling module xil_defaultlib.tb_simple_axi_register
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_simple_axi_register_behav

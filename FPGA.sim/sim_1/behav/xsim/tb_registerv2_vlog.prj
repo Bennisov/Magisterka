@@ -1,5 +1,5 @@
 # compile verilog/system verilog design source files
-sv xil_defaultlib  --include "D:/Master_Thesis/2025.1/Vivado/data/rsb/busdef" \
+sv xil_defaultlib  --include "../../../../../../../../../Xilinx/2025.1/data/rsb/busdef" \
 "../../../../FPGA.srcs/sources_1/new/Bitv2.sv" \
 "../../../../FPGA.srcs/sources_1/new/Rejestrv2.sv" \
 "../../../../FPGA.srcs/sim_1/new/tb_registerv2.sv" \

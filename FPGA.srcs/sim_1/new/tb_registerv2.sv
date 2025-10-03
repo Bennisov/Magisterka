@@ -54,7 +54,7 @@ module tb_registerv2;
     endtask
 
     task set_out();
-        forever begin
+        repeat( 10 ) begin
             @(negedge clk);
             data         = $urandom;
             reset        = $urandom;

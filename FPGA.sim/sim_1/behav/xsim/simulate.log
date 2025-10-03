@@ -1,1 +1,3 @@
 Time resolution is 1 ps
+Simulation finished. Errors = 0
+$finish called at time : 1101 ns : File "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.srcs/sim_1/new/tb_registerv2.sv" Line 82

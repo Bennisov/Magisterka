@@ -1,0 +1,15 @@
+Time resolution is 1 ps
+XilinxAXIVIP: Found at Path: tb_simple_axi_register.uut.axi_register_verification_i.axi_vip_0.inst
+3300 ns - register 0x0 (0) read value 0xd (        13)
+3820 ns - register 0x1 (1) read value 0x1a (        26)
+4340 ns - register 0x2 (2) read value 0x9d (       157)
+4860 ns - register 0x3 (3) read value 0xe4 (       228)
+Executing Axi4 End Of Simulation checks
+$finish called at time : 5360 ns : File "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.srcs/simple_axi_register/new/tb_simple_axi_register.sv" Line 89
+XilinxAXIVIP: Found at Path: tb_simple_axi_register.uut.axi_register_verification_i.axi_vip_0.inst
+3300 ns - register 0x0 (0) read value 0xd (        13)
+3820 ns - register 0x1 (1) read value 0x1a (        26)
+4340 ns - register 0x2 (2) read value 0x9d (       157)
+4860 ns - register 0x3 (3) read value 0xe4 (       228)
+Executing Axi4 End Of Simulation checks
+$finish called at time : 5360 ns : File "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.srcs/simple_axi_register/new/tb_simple_axi_register.sv" Line 89
