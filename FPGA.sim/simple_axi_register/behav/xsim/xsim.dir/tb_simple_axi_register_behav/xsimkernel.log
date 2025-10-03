@@ -2,3 +2,6 @@ Running: xsim.dir/tb_simple_axi_register_behav/xsimk -simmode gui -wdb tb_simple
 Design successfully loaded
 Design Loading Memory Usage: 180048 KB (Peak: 180056 KB)
 Design Loading CPU Usage: 2020 ms
+Simulation completed
+Simulation Memory Usage: 268820 KB (Peak: 319316 KB)
+Simulation CPU Usage: 2230 ms

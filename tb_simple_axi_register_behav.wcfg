@@ -16,15 +16,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="831.264 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,503.665 ns"></ZoomEndTime>
-      <Cursor1Time time="889.264 ns"></Cursor1Time>
+      <ZoomStartTime time="779.668 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,461.669 ns"></ZoomEndTime>
+      <Cursor1Time time="1,338.168 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="337"></NameColumnWidth>
       <ValueColumnWidth column_width="95"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="3" />
+   <WVObjectSize size="4" />
    <wvobject type="logic" fp_name="/tb_simple_axi_register/aclk">
       <obj_property name="ElementShortName">aclk</obj_property>
       <obj_property name="ObjectShortName">aclk</obj_property>
@@ -69,5 +69,19 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
+   </wvobject>
+   <wvobject type="protoinst" fp_name="/tb_simple_axi_register/uut/axi_register_verification_i/SimpleRegistersBank_0/S00_AXI">
+      <obj_property name="children_use_element_short_name">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+      <obj_property name="EnumTransactionColorTable">0=blank 1=#D399FF 2=pink</obj_property>
+      <obj_property name="EnumTransactionValueTable">0=blank;1=Read;2=Write;3=Read/Write</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">turquoise</obj_property>
+      <obj_property name="Render_Data">/tb_simple_axi_register/uut/axi_register_verification_i/SimpleRegistersBank_0/S00_AXI.readWriteSummary</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CellHeight">36</obj_property>
+      <obj_property name="ElementShortName">S00_AXI</obj_property>
+      <obj_property name="ObjectShortName">S00_AXI</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>
