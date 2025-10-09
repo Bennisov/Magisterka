@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct  3 16:03:49 2025" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Oct  6 12:18:45 2025" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="virtexu" DEVICE="xcvu065" NAME="axi_register_verification" PACKAGE="ffvc1517" SPEEDGRADE="-1"/>
 
@@ -16,12 +16,17 @@
         <CONNECTION INSTANCE="SimpleRegistersBank_0" PORT="s00_axi_aresetn"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="O" LEFT="31" NAME="slv_reg0" RIGHT="0" SIGIS="undef" SIGNAME="SimpleRegistersBank_0_slv_reg0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="SimpleRegistersBank_0" PORT="slv_reg0"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES/>
 
   <MODULES>
-    <MODULE COREREVISION="1" FULLNAME="/SimpleRegistersBank_0" HWVERSION="1.0" INSTANCE="SimpleRegistersBank_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="SimpleRegistersBank" VLNV="user.org:user:SimpleRegistersBank:1.0">
+    <MODULE COREREVISION="5" FULLNAME="/SimpleRegistersBank_0" HWVERSION="1.0" INSTANCE="SimpleRegistersBank_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="SimpleRegistersBank" VLNV="user.org:user:SimpleRegistersBank:1.0">
       <DOCUMENTS/>
       <ADDRESSBLOCKS>
         <ADDRESSBLOCK ACCESS="" INTERFACE="S00_AXI" NAME="S00_AXI_reg" RANGE="4096" USAGE="register"/>
@@ -138,6 +143,11 @@
         <PORT DIR="I" NAME="s00_axi_wvalid" SIGIS="undef" SIGNAME="SimpleRegistersBank_0_s00_axi_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_vip_0" PORT="m_axi_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="slv_reg0" RIGHT="0" SIGIS="undef" SIGNAME="SimpleRegistersBank_0_slv_reg0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="slv_reg0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

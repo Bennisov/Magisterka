@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3E2F63CEECF8E9EC",
+      "boundary_crc": "0x3C8BB0AC8D954A8D",
       "device": "xcvu065-ffvc1517-1-i",
       "gen_directory": "../../../../FPGA.gen/sources_1/bd/axi_register_verification",
       "name": "axi_register_verification",
@@ -57,6 +57,11 @@
             "value_src": "default"
           }
         }
+      },
+      "slv_reg0": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
       }
     },
     "components": {
@@ -125,7 +130,7 @@
       },
       "SimpleRegistersBank_0": {
         "vlnv": "user.org:user:SimpleRegistersBank:1.0",
-        "ip_revision": "1",
+        "ip_revision": "5",
         "xci_name": "axi_register_verification_SimpleRegistersBank_0_0",
         "xci_path": "ip/axi_register_verification_SimpleRegistersBank_0_0/axi_register_verification_SimpleRegistersBank_0_0.xci",
         "inst_hier_path": "SimpleRegistersBank_0",
@@ -141,6 +146,12 @@
       }
     },
     "nets": {
+      "SimpleRegistersBank_0_slv_reg0": {
+        "ports": [
+          "SimpleRegistersBank_0/slv_reg0",
+          "slv_reg0"
+        ]
+      },
       "aclk_1": {
         "ports": [
           "aclk",

@@ -29,6 +29,8 @@ module tb_simple_axi_register();
 	// ------ UUT ------
 	logic aclk;
 	logic aresetn;
+	
+	logic [31:0]	slv_reg0;
 
 	axi_register_verification_wrapper uut ( .* );
 	

@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Fri Oct  3 16:03:48 2025
+//Date        : Mon Oct  6 12:18:44 2025
 //Host        : lumifun running 64-bit Debian GNU/Linux 12 (bookworm)
 //Command     : generate_target axi_register_verification.bd
 //Design      : axi_register_verification
@@ -13,9 +13,11 @@
 (* CORE_GENERATION_INFO = "axi_register_verification,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=axi_register_verification,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=2,numReposBlks=2,numNonXlnxBlks=1,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "axi_register_verification.hwdef" *) 
 module axi_register_verification
    (aclk,
-    aresetn);
+    aresetn,
+    slv_reg0);
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.ACLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.ACLK, ASSOCIATED_RESET aresetn, CLK_DOMAIN axi_register_verification_aclk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.0" *) input aclk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.ARESETN RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.ARESETN, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) input aresetn;
+  output [31:0]slv_reg0;
 
   wire aclk;
   wire aresetn;
@@ -38,6 +40,7 @@ module axi_register_verification
   wire axi_vip_0_M_AXI_WREADY;
   wire [3:0]axi_vip_0_M_AXI_WSTRB;
   wire axi_vip_0_M_AXI_WVALID;
+  wire [31:0]slv_reg0;
 
   axi_register_verification_SimpleRegistersBank_0_0 SimpleRegistersBank_0
        (.s00_axi_aclk(aclk),
@@ -60,7 +63,8 @@ module axi_register_verification
         .s00_axi_wdata(axi_vip_0_M_AXI_WDATA),
         .s00_axi_wready(axi_vip_0_M_AXI_WREADY),
         .s00_axi_wstrb(axi_vip_0_M_AXI_WSTRB),
-        .s00_axi_wvalid(axi_vip_0_M_AXI_WVALID));
+        .s00_axi_wvalid(axi_vip_0_M_AXI_WVALID),
+        .slv_reg0(slv_reg0));
   axi_register_verification_axi_vip_0_0 axi_vip_0
        (.aclk(aclk),
         .aresetn(aresetn),

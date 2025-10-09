@@ -38,8 +38,8 @@ vlog -work xil_defaultlib  -incr "+incdir+../../../../FPGA.gen/sources_1/bd/axi_
 "../../../bd/axi_register_verification/ip/axi_register_verification_axi_vip_0_0/sim/axi_register_verification_axi_vip_0_0.sv" \
 
 vlog -work xil_defaultlib  -incr -v2k5 "+incdir+../../../../FPGA.gen/sources_1/bd/axi_register_verification/ipshared/ec67/hdl" "+incdir+../../../../../../../../../Xilinx/2025.1/data/rsb/busdef" "+incdir+/storage/Xilinx/2025.1/Vivado/data/xilinx_vip/include" -l xilinx_vip -l axi_infrastructure_v1_1_0 -l xil_defaultlib -l axi_vip_v1_1_21 \
-"../../../bd/axi_register_verification/ipshared/9bbb/hdl/SimpleRegistersBank_slave_lite_v1_0_S00_AXI.v" \
-"../../../bd/axi_register_verification/ipshared/9bbb/hdl/SimpleRegistersBank.v" \
+"../../../bd/axi_register_verification/ipshared/3442/hdl/SimpleRegistersBank_slave_lite_v1_0_S00_AXI.v" \
+"../../../bd/axi_register_verification/ipshared/3442/hdl/SimpleRegistersBank.v" \
 "../../../bd/axi_register_verification/ip/axi_register_verification_SimpleRegistersBank_0_0/sim/axi_register_verification_SimpleRegistersBank_0_0.v" \
 "../../../bd/axi_register_verification/sim/axi_register_verification.v" \
 

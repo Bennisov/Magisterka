@@ -1,2 +1,10 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.srcs/simple_axi_register/new/tb_simple_axi_register.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module tb_simple_axi_register
+INFO: [VRFC 10-2263] Analyzing Verilog file "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.ip_user_files/bd/axi_register_verification/ipshared/3442/hdl/SimpleRegistersBank_slave_lite_v1_0_S00_AXI.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleRegistersBank_slave_lite_v1_0_S00_AXI
+INFO: [VRFC 10-2263] Analyzing Verilog file "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.ip_user_files/bd/axi_register_verification/ipshared/3442/hdl/SimpleRegistersBank.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SimpleRegistersBank
+INFO: [VRFC 10-2263] Analyzing Verilog file "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.ip_user_files/bd/axi_register_verification/ip/axi_register_verification_SimpleRegistersBank_0_0/sim/axi_register_verification_SimpleRegistersBank_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_register_verification_SimpleRegistersBank_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.ip_user_files/bd/axi_register_verification/sim/axi_register_verification.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_register_verification
+INFO: [VRFC 10-2263] Analyzing Verilog file "/storage/moron/Projects/GutsyFerret/REPOSITORIES/GF_Pawlak/FPGA.gen/sources_1/bd/axi_register_verification/hdl/axi_register_verification_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module axi_register_verification_wrapper

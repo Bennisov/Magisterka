@@ -15,7 +15,7 @@
 	)
 	(
 		// Users to add ports here
-
+		output reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg0, 
 		// User ports ends
 		// Do not modify the ports beyond this line
 
@@ -103,7 +103,7 @@
 	//-- Signals for user logic register space example
 	//------------------------------------------------
 	//-- Number of Slave Registers 4
-	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg0;
+	//reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg0;
 	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg1;
 	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg2;
 	reg [C_S_AXI_DATA_WIDTH-1:0]	slv_reg3;
