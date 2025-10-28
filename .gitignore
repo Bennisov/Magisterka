@@ -135,3 +135,6 @@ ipshared
 *is_running__*
 *is_complete__*
 
+### IP repository
+!ips/**/*.c
+!ips/**/*.h
