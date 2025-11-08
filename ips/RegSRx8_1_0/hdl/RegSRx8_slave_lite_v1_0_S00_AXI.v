@@ -93,6 +93,14 @@
 	reg  	axi_arready;
 	reg [1 : 0] 	axi_rresp;
 	reg  	axi_rvalid;
+	reg [C_S_AXI_DATA_WIDTH-1 : 0] registered_wdata;
+	
+	always @(posedge S_AXI_ACLK) begin
+    if (S_AXI_WVALID) 
+        begin
+            registered_wdata <= S_AXI_WDATA;
+        end
+    end
 
 	// Example-specific design signals
 	// local parameter for addressing 32 bit / 64 bit C_S_AXI_DATA_WIDTH
@@ -105,11 +113,11 @@
 	//-- Signals for user logic register space example
 	//------------------------------------------------
 	//-- Number of Slave Registers 8
-	reg [7:0] write_enable = 1;
+	reg [7:0] write_enable = 0;
 	genvar i;
     generate
         for(i=0; i<8; i=i+1) begin : rejestr
-            rejestr u_rejestr(.data(S_AXI_WDATA), .write_enable(write_enable[i]),
+            rejestr u_rejestr(.data(registered_wdata), .write_enable(write_enable[i]),
             .clk(S_AXI_ACLK), .reset(reset[32*i+31:i*32]),
             .set(set[32*i+31:i*32]), .out(out[32*i+31:i*32]), .global_reset(!S_AXI_ARESETN));
         end
@@ -211,17 +219,20 @@ always @(posedge S_AXI_ACLK) begin
         write_enable <= 8'b0;
     else begin
         write_enable <= 8'b0;
-        case ((S_AXI_AWVALID) ? 
-              S_AXI_AWADDR[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] : axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB])
-            0: write_enable[0] <= 1'b1;
-            1: write_enable[1] <= 1'b1;
-            2: write_enable[2] <= 1'b1;
-            3: write_enable[3] <= 1'b1;
-            4: write_enable[4] <= 1'b1;
-            5: write_enable[5] <= 1'b1;
-            6: write_enable[6] <= 1'b1;
-            7: write_enable[7] <= 1'b1;
-        endcase
+        if (S_AXI_WVALID)
+        begin
+            case ((S_AXI_AWVALID) ? 
+                  S_AXI_AWADDR[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB] : axi_awaddr[ADDR_LSB+OPT_MEM_ADDR_BITS:ADDR_LSB])
+                0: write_enable[0] <= 1'b1;
+                1: write_enable[1] <= 1'b1;
+                2: write_enable[2] <= 1'b1;
+                3: write_enable[3] <= 1'b1;
+                4: write_enable[4] <= 1'b1;
+                5: write_enable[5] <= 1'b1;
+                6: write_enable[6] <= 1'b1;
+                7: write_enable[7] <= 1'b1;
+            endcase
+        end
     end
 end
 	// Implement read state machine

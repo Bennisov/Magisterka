@@ -1,3 +1,7 @@
 Time resolution is 1 ps
-XilinxAXIVIP: Found at Path: RegSRx8_tb.DUT.RegSRx8_veri_i.axi_vip_0.inst
+XilinxAXIVIP: Found at Path: Regx32_tb.DUT.Regx32_veri_i.axi_vip_0.inst
+--- TEST PASSED ---
+All 100 scenarios passed with 0 errors.
 Executing Axi4 End Of Simulation checks
+$finish called at time : 3828981 ns : File "C:/Users/Dennisov/FPGA/FPGA.srcs/sim_1/new/Regx32_tb.sv" Line 101
+INFO: xsimkernel Simulation Memory Usage: 247760 KB (Peak: 247760 KB), Simulation CPU Usage: 15328 ms

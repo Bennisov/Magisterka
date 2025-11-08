@@ -1,35 +1,30 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3E1483F016035ED8",
+      "boundary_crc": "0xD2593F962BEE0E96",
       "device": "xcvu065-ffvc1517-1-i",
-      "gen_directory": "../../../../FPGA.gen/sources_1/bd/RegSRx8_veri",
-      "name": "RegSRx8_veri",
+      "gen_directory": "../../../../FPGA.gen/sources_1/bd/RegRx8_veri",
+      "name": "RegRx8_veri",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
       "tool_version": "2025.1",
       "validated": "true"
     },
     "design_tree": {
-      "RegSRx8_0": "",
+      "RegRx8_0": "",
       "axi_vip_0": ""
     },
     "ports": {
-      "aresetn": {
-        "direction": "I"
-      },
-      "aclk": {
-        "direction": "I"
-      },
       "resetuj": {
         "direction": "I",
         "left": "255",
         "right": "0"
       },
-      "setuj": {
-        "direction": "I",
-        "left": "255",
-        "right": "0"
+      "aclk": {
+        "direction": "I"
+      },
+      "aresetn": {
+        "direction": "I"
       },
       "slv_regs": {
         "direction": "O",
@@ -38,19 +33,19 @@
       }
     },
     "components": {
-      "RegSRx8_0": {
-        "vlnv": "xilinx.com:user:RegSRx8:1.0",
-        "ip_revision": "6",
-        "xci_name": "RegSRx8_veri_RegSRx8_0_0",
-        "xci_path": "ip\\RegSRx8_veri_RegSRx8_0_0\\RegSRx8_veri_RegSRx8_0_0.xci",
-        "inst_hier_path": "RegSRx8_0",
+      "RegRx8_0": {
+        "vlnv": "xilinx.com:user:RegRx8:1.0",
+        "ip_revision": "2",
+        "xci_name": "RegRx8_veri_RegRx8_0_0",
+        "xci_path": "ip\\RegRx8_veri_RegRx8_0_0\\RegRx8_veri_RegRx8_0_0.xci",
+        "inst_hier_path": "RegRx8_0",
         "has_run_ip_tcl": "true"
       },
       "axi_vip_0": {
         "vlnv": "xilinx.com:ip:axi_vip:1.1",
         "ip_revision": "21",
-        "xci_name": "RegSRx8_veri_axi_vip_0_0",
-        "xci_path": "ip\\RegSRx8_veri_axi_vip_0_0\\RegSRx8_veri_axi_vip_0_0.xci",
+        "xci_name": "RegRx8_veri_axi_vip_0_0",
+        "xci_path": "ip\\RegRx8_veri_axi_vip_0_0\\RegRx8_veri_axi_vip_0_0.xci",
         "inst_hier_path": "axi_vip_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -114,7 +109,7 @@
       "axi_vip_0_M_AXI": {
         "interface_ports": [
           "axi_vip_0/M_AXI",
-          "RegSRx8_0/S00_AXI"
+          "RegRx8_0/S00_AXI"
         ]
       }
     },
@@ -122,33 +117,27 @@
       "Net": {
         "ports": [
           "aclk",
-          "axi_vip_0/aclk",
-          "RegSRx8_0/s00_axi_aclk"
+          "RegRx8_0/s00_axi_aclk",
+          "axi_vip_0/aclk"
         ]
       },
       "Net1": {
         "ports": [
           "aresetn",
-          "axi_vip_0/aresetn",
-          "RegSRx8_0/s00_axi_aresetn"
+          "RegRx8_0/s00_axi_aresetn",
+          "axi_vip_0/aresetn"
         ]
       },
-      "RegSRx8_0_slv_regs": {
+      "RegRx8_0_slv_regs": {
         "ports": [
-          "RegSRx8_0/slv_regs",
+          "RegRx8_0/slv_regs",
           "slv_regs"
         ]
       },
       "resetuj_1": {
         "ports": [
           "resetuj",
-          "RegSRx8_0/resetuj"
-        ]
-      },
-      "setuj_1": {
-        "ports": [
-          "setuj",
-          "RegSRx8_0/setuj"
+          "RegRx8_0/resetuj"
         ]
       }
     },
@@ -157,8 +146,8 @@
         "address_spaces": {
           "Master_AXI": {
             "segments": {
-              "SEG_RegSRx8_0_S00_AXI_reg": {
-                "address_block": "/RegSRx8_0/S00_AXI/S00_AXI_reg",
+              "SEG_RegRx8_0_S00_AXI_reg": {
+                "address_block": "/RegRx8_0/S00_AXI/S00_AXI_reg",
                 "offset": "0x44A00000",
                 "range": "64K",
                 "offset_base_param": "C_S00_AXI_BASEADDR",
