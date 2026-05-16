@@ -1,0 +1,151 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x68F85AC0009B9B87",
+      "device": "xcvu065-ffvc1517-1-i",
+      "gen_directory": "../../../../FPGA.gen/sources_1/bd/Regx32_veri",
+      "name": "Regx32_veri",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2025.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "Regx32_0": "",
+      "axi_vip_0": ""
+    },
+    "ports": {
+      "aclk": {
+        "direction": "I"
+      },
+      "aresetn": {
+        "direction": "I"
+      },
+      "data_output": {
+        "direction": "O",
+        "left": "1023",
+        "right": "0"
+      }
+    },
+    "components": {
+      "Regx32_0": {
+        "vlnv": "xilinx.com:user:Regx32:1.0",
+        "ip_revision": "2",
+        "xci_name": "Regx32_veri_Regx32_0_0",
+        "xci_path": "ip\\Regx32_veri_Regx32_0_0\\Regx32_veri_Regx32_0_0.xci",
+        "inst_hier_path": "Regx32_0",
+        "has_run_ip_tcl": "true"
+      },
+      "axi_vip_0": {
+        "vlnv": "xilinx.com:ip:axi_vip:1.1",
+        "ip_revision": "21",
+        "xci_name": "Regx32_veri_axi_vip_0_0",
+        "xci_path": "ip\\Regx32_veri_axi_vip_0_0\\Regx32_veri_axi_vip_0_0.xci",
+        "inst_hier_path": "axi_vip_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "ADDR_WIDTH": {
+            "value": "32"
+          },
+          "DATA_WIDTH": {
+            "value": "32"
+          },
+          "HAS_BRESP": {
+            "value": "1"
+          },
+          "HAS_PROT": {
+            "value": "1"
+          },
+          "HAS_RRESP": {
+            "value": "1"
+          },
+          "HAS_WSTRB": {
+            "value": "1"
+          },
+          "INTERFACE_MODE": {
+            "value": "MASTER"
+          },
+          "PROTOCOL": {
+            "value": "AXI4LITE"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
+          }
+        },
+        "interface_ports": {
+          "M_AXI": {
+            "bd_attributes": {
+              "TYPE": {
+                "value": "END_POINT",
+                "value_src": "default"
+              }
+            },
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "Master_AXI",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
+            }
+          }
+        },
+        "addressing": {
+          "address_spaces": {
+            "Master_AXI": {
+              "range": "4G",
+              "width": "32"
+            }
+          }
+        }
+      }
+    },
+    "interface_nets": {
+      "axi_vip_0_M_AXI": {
+        "interface_ports": [
+          "axi_vip_0/M_AXI",
+          "Regx32_0/S00_AXI"
+        ]
+      }
+    },
+    "nets": {
+      "Net": {
+        "ports": [
+          "aresetn",
+          "axi_vip_0/aresetn",
+          "Regx32_0/s00_axi_aresetn"
+        ]
+      },
+      "Net1": {
+        "ports": [
+          "aclk",
+          "axi_vip_0/aclk",
+          "Regx32_0/s00_axi_aclk"
+        ]
+      },
+      "Regx32_0_data_output": {
+        "ports": [
+          "Regx32_0/data_output",
+          "data_output"
+        ]
+      }
+    },
+    "addressing": {
+      "/axi_vip_0": {
+        "address_spaces": {
+          "Master_AXI": {
+            "segments": {
+              "SEG_Regx32_0_S00_AXI_reg": {
+                "address_block": "/Regx32_0/S00_AXI/S00_AXI_reg",
+                "offset": "0x44A00000",
+                "range": "64K",
+                "offset_base_param": "C_S00_AXI_BASEADDR",
+                "offset_high_param": "C_S00_AXI_HIGHADDR"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

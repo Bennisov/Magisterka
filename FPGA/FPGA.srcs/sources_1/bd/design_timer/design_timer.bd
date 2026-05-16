@@ -1,0 +1,57 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xcvu065-ffvc1517-1-i",
+      "gen_directory": "../../../../FPGA.gen/sources_1/bd/design_timer",
+      "name": "design_timer",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2025.1"
+    },
+    "design_tree": {
+      "gf_timer_0": "",
+      "gf_timer_1": ""
+    },
+    "components": {
+      "gf_timer_0": {
+        "vlnv": "user:user:gf_timer:1.0",
+        "ip_revision": "2",
+        "xci_name": "design_timer_gf_timer_0_0",
+        "xci_path": "ip\\design_timer_gf_timer_0_0\\design_timer_gf_timer_0_0.xci",
+        "inst_hier_path": "gf_timer_0",
+        "has_run_ip_tcl": "true",
+        "interface_ports": {
+          "s00_axi": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Slave",
+            "memory_map_ref": "s00_axi"
+          }
+        }
+      },
+      "gf_timer_1": {
+        "vlnv": "user:user:gf_timer:1.0",
+        "ip_revision": "2",
+        "xci_name": "design_timer_gf_timer_0_1",
+        "xci_path": "ip\\design_timer_gf_timer_0_1\\design_timer_gf_timer_0_1.xci",
+        "inst_hier_path": "gf_timer_1",
+        "has_run_ip_tcl": "true",
+        "interface_ports": {
+          "s00_axi": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Slave",
+            "memory_map_ref": "s00_axi"
+          }
+        }
+      }
+    },
+    "nets": {
+      "gf_timer_0_ena_clear_out": {
+        "ports": [
+          "gf_timer_0/ena_clear_out",
+          "gf_timer_1/aena_clear_in"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER RegRx8
+	OPTION supported_peripherals = (RegRx8);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = RegRx8;
+END DRIVER

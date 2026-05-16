@@ -1,0 +1,52 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-117,-38",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
+#  -string -flagsOSRD
+preplace port port-id_aclk -pg 1 -lvl 0 -x 0 -y -20 -defaultsOSRD
+preplace port port-id_aresetn -pg 1 -lvl 0 -x 0 -y 10 -defaultsOSRD
+preplace port port-id_busy_t0 -pg 1 -lvl 3 -x 1030 -y -20 -defaultsOSRD
+preplace port port-id_busy_t1 -pg 1 -lvl 3 -x 1030 -y 10 -defaultsOSRD
+preplace port port-id_ext_trigger_t0 -pg 1 -lvl 0 -x 0 -y 450 -defaultsOSRD
+preplace port port-id_ext_trigger_t1 -pg 1 -lvl 0 -x 0 -y 200 -defaultsOSRD
+preplace port port-id_ena_in_0 -pg 1 -lvl 0 -x 0 -y 350 -defaultsOSRD
+preplace port port-id_aena2_out_0 -pg 1 -lvl 3 -x 1030 -y 40 -defaultsOSRD
+preplace port port-id_aena3_out_0 -pg 1 -lvl 3 -x 1030 -y 70 -defaultsOSRD
+preplace port port-id_aena1_out_1 -pg 1 -lvl 3 -x 1030 -y 210 -defaultsOSRD
+preplace port port-id_aena2_out_1 -pg 1 -lvl 3 -x 1030 -y 240 -defaultsOSRD
+preplace port port-id_aena3_out_1 -pg 1 -lvl 3 -x 1030 -y 270 -defaultsOSRD
+preplace port port-id_aena_in_0 -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port port-id_ena_in_1 -pg 1 -lvl 0 -x 0 -y 240 -defaultsOSRD
+preplace portBus waveform_t0 -pg 1 -lvl 3 -x 1030 -y 110 -defaultsOSRD
+preplace portBus waveform_t1 -pg 1 -lvl 3 -x 1030 -y 310 -defaultsOSRD
+preplace inst axi_vip_0 -pg 1 -lvl 1 -x 450 -y 270 -defaultsOSRD
+preplace inst axi_interconnect_0 -pg 1 -lvl 1 -x 450 -y 50 -defaultsOSRD
+preplace inst gf_timer_0 -pg 1 -lvl 2 -x 820 -y 70 -defaultsOSRD
+preplace inst gf_timer_1 -pg 1 -lvl 2 -x 820 -y 270 -defaultsOSRD
+preplace netloc aclk_1 1 0 2 290 340 640
+preplace netloc aena_in_0_1 1 0 2 40J 190 610J
+preplace netloc aresetn_1 1 0 2 300 350 650
+preplace netloc ena_in_0_1 1 0 2 20J 360 620J
+preplace netloc ena_in_1_1 1 0 2 30J 370 670J
+preplace netloc ext_trigger_t0_1 1 0 2 NJ 450 660
+preplace netloc ext_trigger_t1_1 1 0 2 40J 380 680
+preplace netloc gf_timer_0_aena1_out 1 1 2 680 -40 960
+preplace netloc gf_timer_0_aena2_out 1 2 1 980 40n
+preplace netloc gf_timer_0_aena3_out 1 2 1 N 70
+preplace netloc gf_timer_0_busy_out 1 2 1 970 -20n
+preplace netloc gf_timer_0_waveform_out 1 2 1 N 110
+preplace netloc gf_timer_1_aena1_out 1 2 1 1000 210n
+preplace netloc gf_timer_1_aena2_out 1 2 1 1000 240n
+preplace netloc gf_timer_1_aena3_out 1 2 1 N 270
+preplace netloc gf_timer_1_busy_out 1 2 1 990 10n
+preplace netloc gf_timer_1_waveform_out 1 2 1 N 310
+preplace netloc axi_interconnect_0_M00_AXI 1 1 1 600 20n
+preplace netloc axi_interconnect_0_M01_AXI 1 1 1 600 60n
+preplace netloc axi_vip_0_M_AXI 1 0 2 310 200 590
+levelinfo -pg 1 0 450 820 1030
+pagesize -pg 1 -db -bbox -sgen -150 -90 1200 680
+"
+}
+0

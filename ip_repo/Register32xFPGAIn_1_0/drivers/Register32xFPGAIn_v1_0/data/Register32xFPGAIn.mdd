@@ -1,0 +1,10 @@
+
+
+OPTION psf_version = 2.1;
+
+BEGIN DRIVER Register32xFPGAIn
+	OPTION supported_peripherals = (Register32xFPGAIn);
+	OPTION copyfiles = all;
+	OPTION VERSION = 1.0;
+	OPTION NAME = Register32xFPGAIn;
+END DRIVER
