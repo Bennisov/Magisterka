@@ -135,3 +135,10 @@ ipshared
 *is_running__*
 *is_complete__*
 
+ip_repo/edit_*.xpr
+ip_repo/edit_*.cache/
+ip_repo/edit_*.hw/
+ip_repo/edit_*.sim/
+ip_repo/edit_*.ip_user_files/
+ip_repo/*.zip
+ip_repo/*/xgui/
