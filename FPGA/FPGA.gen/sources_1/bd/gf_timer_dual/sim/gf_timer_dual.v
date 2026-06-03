@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Sat May 16 14:05:28 2026
+//Date        : Wed Jun  3 01:10:58 2026
 //Host        : LAPTOP-H5N3SV97 running 64-bit major release  (build 9200)
 //Command     : generate_target gf_timer_dual.bd
 //Design      : gf_timer_dual
@@ -648,7 +648,7 @@ module gf_timer_dual_axi_interconnect_0_0
         .S_AXI_wready(S00_AXI_wready),
         .S_AXI_wstrb(S00_AXI_wstrb),
         .S_AXI_wvalid(S00_AXI_wvalid));
-  gf_timer_dual_axi_interconnect_0_imp_xbar_0 xbar
+  gf_timer_dual_axi_interconnect_0_upgraded_ipi_imp_xbar_0 xbar
        (.aclk(ACLK),
         .aresetn(ARESETN),
         .m_axi_araddr({xbar_to_m01_couplers_ARADDR,xbar_to_m00_couplers_ARADDR}),

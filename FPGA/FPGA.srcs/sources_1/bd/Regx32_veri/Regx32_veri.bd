@@ -1,14 +1,13 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x68F85AC0009B9B87",
-      "device": "xcvu065-ffvc1517-1-i",
+      "boundary_crc": "0x68F85AC068F85AC0",
+      "device": "xczu9eg-ffvc900-1-e",
       "gen_directory": "../../../../FPGA.gen/sources_1/bd/Regx32_veri",
       "name": "Regx32_veri",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2025.1",
-      "validated": "true"
+      "tool_version": "2025.1"
     },
     "design_tree": {
       "Regx32_0": "",
@@ -112,15 +111,15 @@
       "Net": {
         "ports": [
           "aresetn",
-          "axi_vip_0/aresetn",
-          "Regx32_0/s00_axi_aresetn"
+          "Regx32_0/s00_axi_aresetn",
+          "axi_vip_0/aresetn"
         ]
       },
       "Net1": {
         "ports": [
           "aclk",
-          "axi_vip_0/aclk",
-          "Regx32_0/s00_axi_aclk"
+          "Regx32_0/s00_axi_aclk",
+          "axi_vip_0/aclk"
         ]
       },
       "Regx32_0_data_output": {
