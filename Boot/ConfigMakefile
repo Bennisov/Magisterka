@@ -1,0 +1,35 @@
+# ------------------------------------------------------------------------
+#  Target architecture:
+#    zynq
+#    zynqmp
+# ------------------------------------------------------------------------
+TARGET_ARCH=zynqmp
+
+# ------------------------------------------------------------------------
+#  Firmware project settings
+# ------------------------------------------------------------------------
+FIRMWARE_PATH=..
+FIRMWARE_PROJECT_NAME=CoreDevelopment
+VIVADO_IMPLEMENTATION=impl_1
+FIRMWARE_PROJECT=$(FIRMWARE_PATH)/$(FIRMWARE_PROJECT_NAME)
+
+# ------------------------------------------------------------------------
+#  FSBL Vitis project settings
+# ------------------------------------------------------------------------
+VITIS_WORKSPACE_PATH=../Vitis
+VITIS_PROJECT_NAME=FSBL
+
+VITIS_SOURCES_PATH=$(VITIS_WORKSPACE_PATH)/$(VITIS_PROJECT_NAME)/$(TARGET_ARCH)_fsbl
+VITIS_FSBL_PATH=$(VITIS_SOURCES_PATH)/build/fsbl.elf
+
+# ------------------------------------------------------------------------
+#  SD card mount point settings
+# ------------------------------------------------------------------------
+SD_MOUNT_LOCATION=/media/moron
+SD_BOOT_PARTITION_NAME=BOOT
+SD_MOUNT_DIRECTORY=$(SD_MOUNT_LOCATION)/$(SD_BOOT_PARTITION_NAME)
+
+# ------------------------------------------------------------------------
+#  Default text editor
+# ------------------------------------------------------------------------
+EDITOR=kate

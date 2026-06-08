@@ -1,0 +1,192 @@
+From 393d77104d3410134475652f780e23a0d4a77f30 Mon Sep 17 00:00:00 2001
+From: Jakub Moron <jmoron@agh.edu.pl>
+Date: Wed, 22 Oct 2025 15:09:36 +0200
+Subject: [PATCH] TE mods
+
+---
+ lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.c |  3 ++
+ lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.h |  3 ++
+ lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.c | 57 +++++++++++++++--------
+ lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.h |  3 ++
+ lib/sw_apps/zynqmp_fsbl/src/xfsbl_main.c  | 20 ++++++--
+ 5 files changed, 63 insertions(+), 23 deletions(-)
+
+diff --git a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.c b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.c
+index 504f008004..7fe0135c6a 100644
+--- a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.c
++++ b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.c
+@@ -826,6 +826,9 @@ static void XFsbl_PcieReset(void)
+ u32 XFsbl_BoardInit(void)
+ {
+ 	u32 Status;
++	/* TE Mod:*/  
++	Status = TE_XFsbl_BoardInit();
++	/* TE Mod: finished*/
+ #if defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106)		\
+ 		|| defined(XPS_BOARD_ZCU104) || defined(XPS_BOARD_ZCU111) \
+ 		|| defined(XPS_BOARD_ZCU216) || defined(XPS_BOARD_ZCU208) \
+diff --git a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.h b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.h
+index 6177fb61f9..1aebbbafaf 100644
+--- a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.h
++++ b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_board.h
+@@ -39,6 +39,9 @@ extern "C" {
+ 
+ /***************************** Include Files *********************************/
+ #include "xfsbl_hw.h"
++/* TE Mod:*/
++#include "te_xfsbl_hooks.h"
++/* TE Mod: finished*/
+ #if defined(XPS_BOARD_ZCU102) || defined(XPS_BOARD_ZCU106)		\
+ 		|| defined(XPS_BOARD_ZCU104) || defined(XPS_BOARD_ZCU111) \
+ 		|| defined(XPS_BOARD_ZCU216) || defined(XPS_BOARD_ZCU208) \
+diff --git a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.c b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.c
+index 6be980ca38..025a1c1cef 100644
+--- a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.c
++++ b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.c
+@@ -53,7 +53,9 @@ u32 XFsbl_HookBeforeBSDownload(void )
+ 	/**
+ 	 * Add the code here
+ 	 */
+-
++	/* TE Mod:*/
++	Status = TE_XFsbl_HookBeforeBSDownload();
++	/* TE Mod: finished*/
+ 
+ 	return Status;
+ }
+@@ -66,7 +68,10 @@ u32 XFsbl_HookAfterBSDownload(void )
+ 	/**
+ 	 * Add the code here
+ 	 */
+-
++	/* TE Mod:*/
++	Status = TE_XFsbl_HookAfterBSDownload();
++	/* TE Mod: finished*/
++	
+ 	return Status;
+ }
+ #endif
+@@ -78,7 +83,10 @@ u32 XFsbl_HookBeforeHandoff(u32 EarlyHandoff)
+ 	/**
+ 	 * Add the code here
+ 	 */
+-
++	/* TE Mod:*/
++	Status = TE_XFsbl_HookBeforeHandoff(EarlyHandoff); 
++	/* TE Mod: finished*/
++	
+ 	return Status;
+ }
+ 
+@@ -100,7 +108,10 @@ u32 XFsbl_HookBeforeFallback(void)
+ 	/**
+ 	 * Add the code here
+ 	 */
+-
++	/* TE Mod:*/
++	Status = TE_XFsbl_HookBeforeFallback(); 
++	/* TE Mod: finished*/
++	
+ 	return Status;
+ }
+ 
+@@ -142,23 +153,29 @@ u32 XFsbl_HookPsuInit(void)
+ #endif
+ 
+ 	/* Add the code here */
+-
+-#ifdef XFSBL_ENABLE_DDR_SR
+-	/* Check if DDR is in self refresh mode */
+-	RegVal = Xil_In32(XFSBL_DDR_STATUS_REGISTER_OFFSET) &
+-		DDR_STATUS_FLAG_MASK;
+-	if (RegVal) {
+-		Status = (u32)psu_init_ddr_self_refresh();
+-	} else {
+-		/* Remove DDR IOs from retention */
+-		XFsbl_IoRetentionClear();
+-		Status = (u32)psu_init();
++	/* TE Mod:*/
++	Status = TE_XFsbl_HookPsuInit(); 
++	if (Status != XFSBL_SUCCESS) {
++		xil_printf("Error: TE_XFsbl_HookPsuInit failed\r\n");
+ 	}
+-#else
+-	/* Remove DDR IOs from retention */
+-	XFsbl_IoRetentionClear();
+-	Status = (u32)psu_init();
+-#endif
++	/* TE Mod: finished*/
++	
++//#ifdef XFSBL_ENABLE_DDR_SR
++//	/* Check if DDR is in self refresh mode */
++//	RegVal = Xil_In32(XFSBL_DDR_STATUS_REGISTER_OFFSET) &
++//		DDR_STATUS_FLAG_MASK;
++//	if (RegVal) {
++//		Status = (u32)psu_init_ddr_self_refresh();
++//	} else {
++//		/* Remove DDR IOs from retention */
++//		XFsbl_IoRetentionClear();
++//		Status = (u32)psu_init();
++//	}
++//#else
++//	/* Remove DDR IOs from retention */
++//	XFsbl_IoRetentionClear();
++//	Status = (u32)psu_init();
++//#endif
+ 
+ 	if (XFSBL_SUCCESS != Status) {
+ 			XFsbl_Printf(DEBUG_GENERAL,"XFSBL_PSU_INIT_FAILED\n\r");
+diff --git a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.h b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.h
+index 604cb08f17..fc689d1e8f 100644
+--- a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.h
++++ b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_hooks.h
+@@ -33,6 +33,9 @@ extern "C" {
+ /***************************** Include Files *********************************/
+ #include "xil_types.h"
+ 
++/* TE Mod:*/
++#include "te_xfsbl_hooks.h"
++/* TE Mod: finished*/ 
+ /************************** Constant Definitions *****************************/
+ 
+ /**************************** Type Definitions *******************************/
+diff --git a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_main.c b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_main.c
+index 4532ea9b86..0296ce3123 100644
+--- a/lib/sw_apps/zynqmp_fsbl/src/xfsbl_main.c
++++ b/lib/sw_apps/zynqmp_fsbl/src/xfsbl_main.c
+@@ -351,15 +351,29 @@ void XFsbl_PrintFsblBanner(void )
+ 	 */
+ #if !defined(XFSBL_PERF) || defined(FSBL_DEBUG) || defined(FSBL_DEBUG_INFO) \
+ 			|| defined(FSBL_DEBUG_DETAILED)
++	// TE Mod :
+ 	XFsbl_Printf(DEBUG_PRINT_ALWAYS,
+-                 "Zynq MP First Stage Boot Loader \n\r");
++                 "\r\n--------------------------------------------------------------------------------\r\n");
++	XFsbl_Printf(DEBUG_PRINT_ALWAYS,
++                 "Zynq MP First Stage Boot Loader (TE modified)\n\r");
++	XFsbl_Printf(DEBUG_PRINT_ALWAYS,
++                 "Gutsy Ferret project\n\r");
++	
+ 	XFsbl_Printf(DEBUG_PRINT_ALWAYS,
+                  "Release %d.%d   %s  -  %s\r\n",
+                  SDK_RELEASE_YEAR, SDK_RELEASE_QUARTER,__DATE__,__TIME__);
+-
++	
++	/* Build Device name and print it */
++	//char DevName[20U];
++	//(void)XFsbl_Strcpy(DevName, "XCZU");
++	//(void)XFsbl_Strcat(DevName, XFsbl_GetSiliconIdName());
++	//(void)XFsbl_Strcat(DevName, XFsbl_GetProcEng());
++	//XFsbl_Printf(DEBUG_PRINT_ALWAYS, "Device Name: %s\n\r", DevName);  
++	// TE Mod finished
++	
+ 	XFsbl_Printf(DEBUG_GENERAL, "MultiBootOffset: 0x%0x\r\n",
+ 		XFsbl_In32(CSU_CSU_MULTI_BOOT));
+-
++	
+ 	if(FsblInstance.ResetReason == XFSBL_PS_ONLY_RESET) {
+ 		XFsbl_Printf(DEBUG_GENERAL,"Reset Mode	:	PS Only Reset\r\n");
+ 	} else if (XFSBL_MASTER_ONLY_RESET == FsblInstance.ResetReason) {
+-- 
+2.39.5
+

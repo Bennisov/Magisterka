@@ -1,0 +1,316 @@
+#include "system-conf.dtsi"
+#include <dt-bindings/phy/phy.h>
+
+/ {
+	chosen {
+		xlnx,eeprom = &eeprom;
+	};
+	
+	// Xilinx messed up ZYNQ PLL configuration in Petalinux 2024
+	// Without workaround added below the PL clocks stops as soon as the device tree is loaded by kernel
+	fclk0:fclk0 {
+		status = "okay";
+		compatible = "xlnx,fclk";
+		clocks = <0x04 0x47>;
+		phandle = <0xa5>;
+	};
+	
+	fclk1 {
+		status = "okay";
+		compatible = "xlnx,fclk";
+		clocks = <0x04 0x48>;
+		phandle = <0xa6>;
+	};
+	
+	fclk2 {
+		status = "okay";
+		compatible = "xlnx,fclk";
+		clocks = <0x04 0x49>;
+		phandle = <0xa7>;
+  };
+	
+	fclk3 {
+		status = "okay";
+		compatible = "xlnx,fclk";
+		clocks = <0x04 0x4a>;
+		phandle = <0xa8>;
+	};
+	
+	// I2C bus aliases to hardcode bus numbers
+	aliases {
+		i2c30 = &i2c_mux73_port0;		// TEBF0808 MCLK - SI5338A, 570FBB000290DG_unassembled
+		i2c31 = &i2c_mux73_port1;		// TEBF0808 SFP_EXP PCF8574DWR
+		i2c32 = &i2c_mux73_port2;		// TEBF0808 PCIEx
+		i2c33 = &i2c_mux73_port3;		// TEBF0808 SFP1
+		i2c34 = &i2c_mux73_port4;		// TEBF0808 SFP2
+		i2c35 = &i2c_mux73_port5;		// TEBF0808 EEPROMs
+		i2c36 = &i2c_mux73_port6;		// TEBF0808 FMC - Gutsy Ferret backplane
+		i2c37 = &i2c_mux73_port7;		// TEBF0808 USB hub
+		
+		i2c70 = &i2c_mux77_port0;		// TEBF0808 PMOD P1
+		i2c71 = &i2c_mux77_port1;		// TEBF0808 I2C audio codec
+		i2c72 = &i2c_mux77_port2;		// TEBF0808 Firefly A
+		i2c73 = &i2c_mux77_port3;		// TEBF0808 Firefly B
+		i2c74 = &i2c_mux77_port4;		// TE0808 PLL Si5338 or SI5345
+		i2c75 = &i2c_mux77_port5;		// TEBF0808 CPLD
+		i2c76 = &i2c_mux77_port6;		// TEBF0808 Firefly expander PCF8574DWR
+		i2c77 = &i2c_mux77_port7;		// TEBF0808 PMOD P3
+	};
+};
+
+&AXI_DMA {
+	compatible = "generic-uio";
+	linux,uio-name = "AXI_DMA";
+};
+
+&AXI_BRAM_DESCR_ZYNQ {
+	compatible = "generic-uio";
+	linux,uio-name = "AXI_BRAM_DESCR_ZYNQ";
+};
+
+&SAXI_IODELAY {
+	compatible = "generic-uio";
+	linux,uio-name = "SAXI_IODELAY";
+};
+
+&SAXI_READOUT_CONTROL {
+	compatible = "generic-uio";
+	linux,uio-name = "SAXI_READOUT_CONTROL";
+};
+
+&SAXI_READOUT_STATUS {
+	compatible = "generic-uio";
+	linux,uio-name = "SAXI_READOUT_STATUS";
+};
+
+&SAXI_DAQ {
+	compatible = "generic-uio";
+	linux,uio-name = "SAXI_DAQ";
+};
+
+&SAXI_CLKDIV {
+	compatible = "generic-uio";
+	linux,uio-name = "SAXI_CLKDIV";
+};
+
+&HW_info_ROM_BRAM {
+	compatible = "generic-uio";
+	linux,uio-name = "HW_info_ROM_BRAM";
+};
+
+// ========================================
+//  TEBF0808 specific config
+//  Do not modify anything below!
+// ========================================
+
+/*------------------ PS GTR --------------------*/
+// https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841716/Zynq+Ultrascale+MPSOC+Linux+SIOU+driver
+/ {
+	refclk3:refclk_dp {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <27000000>;
+	};
+	
+	refclk2:refclk_usb {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <100000000>;
+	};
+	
+	refclk1:refclk_sata {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <150000000>;
+	};
+	
+	//refclk0:refclk_unused {
+	//        compatible = "fixed-clock";
+	//        #clock-cells = <0x00>;
+	//        clock-frequency = <100000000>;
+	//};
+};
+  
+&psgtr {
+	status = "okay";
+	clocks = <&refclk1>,<&refclk2>,<&refclk3>;
+	/* ref clk instances used per lane */
+	clock-names = "ref1","ref2","ref3";
+};
+
+/*------------------ DP --------------------*/
+/ {
+	connector {
+		compatible = "dp-connector";
+		label = "dp0";
+		type = "full-size";
+		port {
+			dp_connector_in: endpoint {
+				remote-endpoint = <&out_dp>;
+			};
+		};
+	};
+};
+
+&zynqmp_dpsub {
+	//status = "okay";
+	//phy-names = "dp-phy0";
+	//phys = <&psgtr 3 PHY_TYPE_DP 0 3>;
+	
+	ports{
+		port@5 {
+			dpsub_dp_out: endpoint {
+				remote-endpoint = <&dp_connector_in>;
+			};
+		};
+	};
+};
+
+/*------------------ SD --------------------*/
+&sdhci0 {
+	status = "disabled";
+	bus-width = <8>;
+};
+
+&sdhci1 {
+	// disable-wp;
+	no-1-8-v;
+};
+
+/*------------------ USB --------------------*/
+&dwc3_0 {
+	//status = "okay";
+	dr_mode = "host";
+	//snps,usb3_lpm_capable;
+	//snps,dis_u3_susphy_quirk;
+	//snps,dis_u2_susphy_quirk;
+	//phy-names = "usb2-phy","usb3-phy";
+	//maximum-speed = "super-speed";
+	//phys = <&psgtr 1 PHY_TYPE_USB3 0 2>;
+};
+
+/*------------------ ETH PHY --------------------*/
+&gem3 {
+	/delete-property/ local-mac-address;
+	phy-handle = <&phy0>;
+	
+	nvmem-cells = <&eth0_addr>;
+	nvmem-cell-names = "mac-address";
+	
+	phy0: phy0@1 {
+		device_type = "ethernet-phy";
+		reg = <1>;
+	};
+};
+
+ 
+/*------------------ QSPI --------------------*/
+&qspi {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+	flash0: flash@0 {
+		compatible = "jedec,spi-nor";
+		reg = <0x0>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+	};
+};
+
+/*------------------ SATA --------------------*/
+/* The following entries are missing in Yocto */
+/* sources used by Petalinux 2022.2           */
+/* It is a Yocto bug, but currently these     */
+/* entries have to be added manually here.    */
+&sata {
+	status = "okay";
+	ceva,p0-burst-params = <0x13084a06>;
+	ceva,p0-cominit-params = <0x18401828>;
+	ceva,p0-comwake-params = <0x614080e>;
+	ceva,p0-retry-params = <0x96a43ffc>;
+	ceva,p1-burst-params = <0x13084a06>;
+	ceva,p1-cominit-params = <0x18401828>;
+	ceva,p1-comwake-params = <0x614080e>;
+	ceva,p1-retry-params = <0x96a43ffc>;
+};
+
+
+/*------------------ I2C --------------------*/
+&i2c0 {
+	i2cswitch@73 {
+		compatible = "nxp,pca9548";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		reg = <0x73>;
+		i2c-mux-idle-disconnect;
+		i2c_mux73_port0: i2c@0 { // MCLK TEBF0808 SI5338A, 570FBB000290DG_unassembled
+			reg = <0>;
+		};
+		i2c_mux73_port1: i2c@1 { // SFP TEBF0808 PCF8574DWR
+			reg = <1>;
+		};
+		i2c_mux73_port2: i2c@2 { // PCIe
+			reg = <2>;
+		};
+		i2c_mux73_port3: i2c@3 { // SFP1 TEBF0808
+			reg = <3>;
+		};
+		i2c_mux73_port4: i2c@4 {// SFP2 TEBF0808
+			reg = <4>;
+		};
+		i2c_mux73_port5: i2c@5 { // TEBF0808 EEPROM
+			reg = <5>;
+			eeprom: eeprom@50 {
+				compatible = "microchip,24aa025", "atmel,24c02";
+				reg = <0x50>;
+				
+				#address-cells = <1>;
+				#size-cells = <1>;
+				eth0_addr: eth-mac-addr@FA {
+				  reg = <0xFA 0x06>;
+				};
+		   };
+		};
+		i2c_mux73_port6: i2c@6 { // TEBF0808 FMC
+			reg = <6>;
+		};
+		i2c_mux73_port7: i2c@7 { // TEBF0808 USB HUB
+			reg = <7>;
+		};
+	};
+	i2cswitch@77 {
+		compatible = "nxp,pca9548";
+		reg = <0x77>;
+		i2c-mux-idle-disconnect;
+		i2c_mux77_port0: i2c@0 { // TEBF0808 PMOD P1
+			reg = <0>;
+		};
+		i2c_mux77_port1: i2c@1 { // i2c Audio Codec
+			reg = <1>;
+			/*
+			adau1761: adau1761@38 {
+				compatible = "adi,adau1761";
+				reg = <0x38>;
+			};
+			*/
+		};
+		i2c_mux77_port2: i2c@2 { // TEBF0808 Firefly A
+			reg = <2>;
+		};
+		i2c_mux77_port3: i2c@3 { // TEBF0808 Firefly B
+			reg = <3>;
+		};
+		i2c_mux77_port4: i2c@4 { //Module PLL Si5338 or SI5345
+			reg = <4>;
+		};
+		i2c_mux77_port5: i2c@5 { //TEBF0808 CPLD
+			reg = <5>;
+		};
+		i2c_mux77_port6: i2c@6 { //TEBF0808 Firefly PCF8574DWR
+			reg = <6>;
+		};
+		i2c_mux77_port7: i2c@7 { // TEBF0808 PMOD P3
+			reg = <7>;
+		};
+	};
+};
