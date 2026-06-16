@@ -12,3 +12,6 @@ pre-built/linux/
 components/plnx_workspace
 components/yocto
 system.dts
+**/drivers/**/*.c
+**/drivers/**/*.h
+**/.Xil
